@@ -1,6 +1,7 @@
 import { Button, Grid, TextField } from "@mui/material";
 import React, { useState } from "react";
 
+
 const Form = () => {
   const [ad, setAd] = useState("");
   const [soyad, setSoyad] = useState("");
@@ -89,7 +90,6 @@ const Form = () => {
             onChange={(e) => setEvnom(e.target.value)}
           />
         </Grid>
-
         <Button variant="contained" color="primary" type="submit">
           Submit
         </Button>
