@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  height: 100vh;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+}
+
+.main-container input {
+  padding: 10px;
+  margin: 15px;
+}
+
+.main-container button {
+  padding: 10px;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  align-items: center;
+}
