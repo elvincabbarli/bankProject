@@ -13,9 +13,10 @@ const Form = () => {
   const [dogumTarixi, setTarix] = useState("");
   const [mobil, setMobil] = useState("");
   const [evNom, setEvnom] = useState("");
+  const [finKod, setFinKod] = useState("");
 
   const dispatch = useDispatch();
-  const allUsers = useSelector(state => state.userReducer.users);
+  const allUsers = useSelector((state) => state.userReducer.users);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,18 +29,14 @@ const Form = () => {
       dogumTarixi,
       mobil,
       evNom,
+      finKod
     };
 
-    // let myArray = [];
-    // myArray = [...myArray, defaultValues];
-    // window.localStorage.setItem("myData", JSON.stringify(myArray));
     dispatch(userSliceAction.addUser(defaultValues));
-    
+    window.localStorage.setItem('users' , JSON.stringify([...allUsers , defaultValues]))
   };
 
-  useEffect(() => {
-    window.localStorage.setItem('users', JSON.stringify(allUsers));
-  }, [])
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -73,12 +70,13 @@ const Form = () => {
             onChange={(e) => setAtaadi(e.target.value)}
           />
         </Grid>
+
         <Grid item>
           <TextField
-            label="Qeydiyyat Unvan"
-            type="text"
-            value={qeydiyyatUnvan}
-            onChange={(e) => setQeydiyyat(e.target.value)}
+            label="FIN"
+            type="number"
+            value={finKod}
+            onChange={(e) => setFinKod(e.target.value)}
           />
         </Grid>
       </Grid>
@@ -86,15 +84,31 @@ const Form = () => {
       <Grid container alignItems="center" justify="center" direction="row">
         <Grid item>
           <TextField
-            label="Faktiki Unvan"
-            type="text"
-            value={faktikiUnvan}
-            onChange={(e) => setFaktiki(e.target.value)}
+            label="Cib Nomresi"
+            type="number"
+            value={mobil}
+            onChange={(e) => setMobil(e.target.value)}
           />
         </Grid>
         <Grid item>
           <MaskedInput
-            mask={['(', /[0-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]}
+            mask={[
+              "(",
+              /[0-9]/,
+              /\d/,
+              /\d/,
+              ")",
+              " ",
+              /\d/,
+              /\d/,
+              /\d/,
+              "-",
+              /\d/,
+              /\d/,
+              "-",
+              /\d/,
+              /\d/,
+            ]}
             placeholder="Ev Nomresi"
             guide={true}
             value={evNom}
@@ -114,10 +128,10 @@ const Form = () => {
         </Grid>
         <Grid item>
           <TextField
-            label="Cib Nomresi"
-            type="number"
-            value={mobil}
-            onChange={(e) => setMobil(e.target.value)}
+            label="Qeydiyyat Unvan"
+            type="text"
+            value={qeydiyyatUnvan}
+            onChange={(e) => setQeydiyyat(e.target.value)}
           />
         </Grid>
       </Grid>
@@ -132,7 +146,7 @@ const Form = () => {
           InputLabelProps={{
             shrink: true,
           }}
-        />  
+        />
 
         <Button variant="contained" color="primary" type="submit">
           Submit
