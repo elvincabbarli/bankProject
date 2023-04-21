@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../css/main.css";
 import { Link } from "react-router-dom";
 import {
@@ -64,24 +64,21 @@ const Main = () => {
           >
             <TableContainer>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                
-                {
-                  isSearch && filteredData.length > 0 && (
-                <TableHead sx={{ border: 1 }}>
-                  <TableRow>
-                    <TableCell>Ad:</TableCell>
-                    <TableCell align="right">Soyad:</TableCell>
-                    <TableCell align="right">Ata Adi</TableCell>
-                    <TableCell align="right">Dogum Tarixi</TableCell>
-                    <TableCell align="right">Ev Nomresi</TableCell>
-                    <TableCell align="right">Cib</TableCell>
-                    <TableCell align="right">Faktiki Unvan</TableCell>
-                    <TableCell align="right">Qeydiyyat Unvan</TableCell>
-                    <TableCell align="right">Action</TableCell>
-                  </TableRow>
-                </TableHead>
-                  )
-                }
+                {isSearch && filteredData.length > 0 && (
+                  <TableHead sx={{ border: 1 }}>
+                    <TableRow>
+                      <TableCell>Ad:</TableCell>
+                      <TableCell align="right">Soyad:</TableCell>
+                      <TableCell align="right">Ata Adi</TableCell>
+                      <TableCell align="right">Dogum Tarixi</TableCell>
+                      <TableCell align="right">Ev Nomresi</TableCell>
+                      <TableCell align="right">Cib</TableCell>
+                      <TableCell align="right">Faktiki Unvan</TableCell>
+                      <TableCell align="right">Qeydiyyat Unvan</TableCell>
+                      <TableCell align="right">Action</TableCell>
+                    </TableRow>
+                  </TableHead>
+                )}
 
                 {isSearch &&
                   filteredData.length > 0 &&
@@ -106,7 +103,7 @@ const Main = () => {
                           {item.qeydiyyatUnvan}
                         </TableCell>
                         <TableCell align="right">
-                          <Link to='/credit'>Kredit Yarat</Link>
+                          <Link to="/credit">Kredit Yarat</Link>
                         </TableCell>
                       </TableRow>
                     </TableBody>
