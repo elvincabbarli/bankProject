@@ -1,7 +1,6 @@
 import { Button, Grid, TextField } from "@mui/material";
 import React, { useState } from "react";
 
-
 const Form = () => {
   const [ad, setAd] = useState("");
   const [soyad, setSoyad] = useState("");
@@ -31,7 +30,7 @@ const Form = () => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <Grid container alignItems="center" justify="center" direction="column">
+      <Grid container alignItems="center" justify="center" direction="row">
         <Grid item>
           <TextField
             label="Adi"
@@ -50,6 +49,9 @@ const Form = () => {
             onChange={(e) => setSoyad(e.target.value)}
           />
         </Grid>
+      </Grid>
+
+      <Grid container alignItems="center" justify="center" direction="row">
         <Grid item>
           <TextField
             label="Ata Adi"
@@ -66,6 +68,9 @@ const Form = () => {
             onChange={(e) => setQeydiyyat(e.target.value)}
           />
         </Grid>
+      </Grid>
+
+      <Grid container alignItems="center" justify="center" direction="row">
         <Grid item>
           <TextField
             label="Faktiki Unvan"
@@ -82,14 +87,39 @@ const Form = () => {
             onChange={(e) => setMobil(e.target.value)}
           />
         </Grid>
+      </Grid>
+
+      <Grid container alignItems="center" justify="center" direction="row">
         <Grid item>
           <TextField
-            type="number"
-            label="Cib Nomresi"
-            value={evNom}
-            onChange={(e) => setEvnom(e.target.value)}
+            label="Faktiki Unvan"
+            type="text"
+            value={faktikiUnvan}
+            onChange={(e) => setFaktiki(e.target.value)}
           />
         </Grid>
+        <Grid item>
+          <TextField
+            label="Ev Nomresi"
+            type="number"
+            value={mobil}
+            onChange={(e) => setMobil(e.target.value)}
+          />
+        </Grid>
+      </Grid>
+
+      <Grid container alignItems="center" justify="center" direction="row">
+        <TextField
+          id="date"
+          label="Birthday"
+          type="date"
+          value={dogumTarixi}
+          onChange={(e) => setTarix(e.target.value)}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />  
+
         <Button variant="contained" color="primary" type="submit">
           Submit
         </Button>
