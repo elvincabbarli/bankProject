@@ -24,11 +24,9 @@ const Main = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // setFilteredData(
-    //   allUSers.filter((item) =>
-    //     item.ad.toLowerCase().includes(searchedData.toLowerCase())
-    //   )
-    // );
+    
+    setFilteredData(allUSers.filter((item) => item.ad.toLowerCase().includes(searchedData.toLowerCase().trim())));
+
     setIsSearch(true);
   };
 
