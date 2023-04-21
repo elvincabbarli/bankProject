@@ -5,15 +5,8 @@ const Header = () => {
   return (
     <header>
       <Link to="/">
-        <h1>Bank Respublika</h1>
+        <h1>Bank Respublika <span>Kredit App</span></h1>
       </Link>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/new-login">Login</Link>
-          </li>
-        </ul>
-      </nav>
     </header>
   );
 };

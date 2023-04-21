@@ -83,8 +83,8 @@ const Form = () => {
           <TextField
             label="Ev Nomresi"
             type="number"
-            value={mobil}
-            onChange={(e) => setMobil(e.target.value)}
+            value={evNom}
+            onChange={(e) => setEvnom(e.target.value)}
           />
         </Grid>
       </Grid>
@@ -100,7 +100,7 @@ const Form = () => {
         </Grid>
         <Grid item>
           <TextField
-            label="Ev Nomresi"
+            label="Cib Nomresi"
             type="number"
             value={mobil}
             onChange={(e) => setMobil(e.target.value)}
