@@ -17,6 +17,7 @@ const Main = () => {
 
   const [isSearch, setIsSearch] = useState(false);
 
+
   const allUSers = useSelector((state) => state.userReducer.users);
   console.log(allUSers);
 
@@ -24,6 +25,10 @@ const Main = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+
+    if(searchedData.trim().length === 0) {
+      return;
+    }
 
     setFilteredData(
       allUSers.filter((item) =>
@@ -66,7 +71,7 @@ const Main = () => {
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 
                 {
-                  isSearch && filteredData.length > 0 && (
+                  isSearch && filteredData.length > 0 &&  (
                 <TableHead sx={{ border: 1 }}>
                   <TableRow>
                     <TableCell>Ad:</TableCell>
