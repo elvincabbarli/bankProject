@@ -27,7 +27,7 @@ const Main = () => {
   return (
     <div className="main-container">
       <div className="main-inner">
-        <form onSubmit={handleSearch}>
+        <form className="search-form" onSubmit={handleSearch}>
           <input
             type="text"
             value={searchedData}
