@@ -2,6 +2,7 @@ import { Button, Grid, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userSliceAction } from "../store/user-slice";
+import MaskedInput from "react-text-mask";
 
 const Form = () => {
   const [ad, setAd] = useState("");
@@ -92,9 +93,10 @@ const Form = () => {
           />
         </Grid>
         <Grid item>
-          <TextField
-            label="Ev Nomresi"
-            type="number"
+          <MaskedInput
+            mask={['(', /[0-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]}
+            placeholder="Ev Nomresi"
+            guide={true}
             value={evNom}
             onChange={(e) => setEvnom(e.target.value)}
           />
