@@ -14,19 +14,14 @@ import { useSelector } from "react-redux";
 const Main = () => {
   const [searchedData, setSearchedData] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-
   const [isSearch, setIsSearch] = useState(false);
-
-
   const allUSers = useSelector((state) => state.userReducer.users);
-  console.log(allUSers);
-
-  // setItem("users", JSON.stringify(allUSers));
 
   const handleSearch = (e) => {
     e.preventDefault();
 
-    if(searchedData.trim().length === 0) {
+    if (searchedData.trim().length === 0) {
+      setFilteredData([])
       return;
     }
 
@@ -35,7 +30,6 @@ const Main = () => {
         item.ad.toLowerCase().includes(searchedData.toLowerCase().trim())
       )
     );
-
     setIsSearch(true);
   };
 
@@ -72,9 +66,10 @@ const Main = () => {
                 {isSearch && filteredData.length > 0 && (
                   <TableHead sx={{ border: 1 }}>
                     <TableRow>
-                      <TableCell>Ad:</TableCell>
+                      <TableCell align="right">Ad:</TableCell>
                       <TableCell align="right">Soyad:</TableCell>
                       <TableCell align="right">Ata Adi</TableCell>
+                      <TableCell align="right">FIN Kod</TableCell>
                       <TableCell align="right">Dogum Tarixi</TableCell>
                       <TableCell align="right">Ev Nomresi</TableCell>
                       <TableCell align="right">Cib</TableCell>
@@ -99,6 +94,7 @@ const Main = () => {
                         </TableCell>
                         <TableCell align="right">{item.soyad}</TableCell>
                         <TableCell align="right">{item.ataAdi}</TableCell>
+                        <TableCell align="right">{item.finKod}</TableCell>
                         <TableCell align="right">{item.dogumTarixi}</TableCell>
                         <TableCell align="right">{item.evNom}</TableCell>
                         <TableCell align="right">{item.mobil}</TableCell>
