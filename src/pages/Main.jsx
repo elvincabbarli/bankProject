@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import "../css/main.css";
 import { Link } from "react-router-dom";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,} from "@mui/material";
 
 const Main = () => {
   const myData = JSON.parse(localStorage.getItem("myData"));
   const [searchedData, setSearchedData] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+
+  const [isSearch , setIsSearch] = useState(false)
+
+console.log(myData)
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -22,6 +19,7 @@ const Main = () => {
         item.ad.toLowerCase().includes(searchedData.toLowerCase())
       )
     );
+    setIsSearch(true)
   };
 
   return (
@@ -36,7 +34,17 @@ const Main = () => {
           <button>Search</button>
         </form>
         <div className="search-result">
-          {filteredData.length > 0 ? (
+          {(isSearch && filteredData.length === 0) && (
+            <h1>
+              Musteri Qeydiyyati{" "}
+              <Link style={{ color: "red" }} to="/new-login">
+                Qeydiyyat
+              </Link>
+            </h1>
+
+          )}
+         {
+          (isSearch && filteredData.length > 0) && (
             filteredData.map((item) => (
               <div
                 style={{
@@ -90,14 +98,8 @@ const Main = () => {
                 </TableContainer>
               </div>
             ))
-          ) : (
-            <h1>
-              Musteri Qeydiyyati{" "}
-              <Link style={{ color: "red" }} to="/new-login">
-                Qeydiyyat
-              </Link>
-            </h1>
-          )}
+          )
+         }
         </div>
       </div>
     </div>
