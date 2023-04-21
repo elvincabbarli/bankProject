@@ -1,5 +1,7 @@
 import { Button, Grid, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { userSliceAction } from "../store/user-slice";
 
 const Form = () => {
   const [ad, setAd] = useState("");
@@ -10,6 +12,9 @@ const Form = () => {
   const [dogumTarixi, setTarix] = useState("");
   const [mobil, setMobil] = useState("");
   const [evNom, setEvnom] = useState("");
+
+  const dispatch = useDispatch();
+  const allUsers = useSelector(state => state.userReducer.users);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,10 +29,17 @@ const Form = () => {
       evNom,
     };
 
-    let myArray = [];
-    myArray = [...myArray, defaultValues];
-    window.localStorage.setItem("myData", JSON.stringify(myArray));
+    // let myArray = [];
+    // myArray = [...myArray, defaultValues];
+    // window.localStorage.setItem("myData", JSON.stringify(myArray));
+    dispatch(userSliceAction.addUser(defaultValues));
+    
   };
+
+  useEffect(() => {
+    window.localStorage.setItem('users', JSON.stringify(allUsers));
+  }, [])
+
   return (
     <form onSubmit={handleSubmit}>
       <Grid container alignItems="center" justify="center" direction="row">
