@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const getAllUsers = () => {
     const allUsers = window.localStorage.getItem('users');
     if(allUsers) {
-        return allUsers;
+        return JSON.parse(allUsers);
     }else{
         return [];
     }
