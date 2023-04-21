@@ -24,8 +24,12 @@ const Main = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    
-    setFilteredData(allUSers.filter((item) => item.ad.toLowerCase().includes(searchedData.toLowerCase().trim())));
+
+    setFilteredData(
+      allUSers.filter((item) =>
+        item.ad.toLowerCase().includes(searchedData.toLowerCase().trim())
+      )
+    );
 
     setIsSearch(true);
   };
@@ -50,34 +54,39 @@ const Main = () => {
               </Link>
             </h1>
           )}
-          {isSearch &&
-            filteredData.length > 0 &&
-            filteredData.map((item) => (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  border: "1px solid black",
-                  padding: "10px",
-                  justifyContent: "space-between",
-                }}
-              >
-                <TableContainer>
-                  <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Ad:</TableCell>
-                        <TableCell align="right">Soyad:</TableCell>
-                        <TableCell align="right">Ata Adi</TableCell>
-                        <TableCell align="right">Dogum Tarixi</TableCell>
-                        <TableCell align="right">Ev Nomresi</TableCell>
-                        <TableCell align="right">Cib</TableCell>
-                        <TableCell align="right">Faktiki Unvan</TableCell>
-                        <TableCell align="right">Qeydiyyat Unvan</TableCell>
-                        <TableCell align="right">Action</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <TableContainer>
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                
+                {
+                  isSearch && filteredData.length > 0 && (
+                <TableHead sx={{ border: 1 }}>
+                  <TableRow>
+                    <TableCell>Ad:</TableCell>
+                    <TableCell align="right">Soyad:</TableCell>
+                    <TableCell align="right">Ata Adi</TableCell>
+                    <TableCell align="right">Dogum Tarixi</TableCell>
+                    <TableCell align="right">Ev Nomresi</TableCell>
+                    <TableCell align="right">Cib</TableCell>
+                    <TableCell align="right">Faktiki Unvan</TableCell>
+                    <TableCell align="right">Qeydiyyat Unvan</TableCell>
+                    <TableCell align="right">Action</TableCell>
+                  </TableRow>
+                </TableHead>
+                  )
+                }
+
+                {isSearch &&
+                  filteredData.length > 0 &&
+                  filteredData.map((item) => (
+                    <TableBody sx={{ border: 1 }}>
                       <TableRow
                         key={item.ad}
                         sx={{
@@ -97,14 +106,14 @@ const Main = () => {
                           {item.qeydiyyatUnvan}
                         </TableCell>
                         <TableCell align="right">
-                          <Link>Kredit Yarat</Link>
+                          <Link to='/credit'>Kredit Yarat</Link>
                         </TableCell>
                       </TableRow>
                     </TableBody>
-                  </Table>
-                </TableContainer>
-              </div>
-            ))}
+                  ))}
+              </Table>
+            </TableContainer>
+          </div>
         </div>
       </div>
     </div>
