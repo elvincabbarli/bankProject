@@ -1,25 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/main.css";
 import { Link } from "react-router-dom";
-import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,} from "@mui/material";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+import { useSelector } from "react-redux";
 
 const Main = () => {
-  const myData = JSON.parse(localStorage.getItem("myData"));
   const [searchedData, setSearchedData] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
-  const [isSearch , setIsSearch] = useState(false)
+  const [isSearch, setIsSearch] = useState(false);
 
-console.log(myData)
+  const allUSers = useSelector((state) => state.userReducer.users);
+  console.log(allUSers);
+
+  // setItem("users", JSON.stringify(allUSers));
 
   const handleSearch = (e) => {
     e.preventDefault();
-    setFilteredData(
-      myData.filter((item) =>
-        item.ad.toLowerCase().includes(searchedData.toLowerCase())
-      )
-    );
-    setIsSearch(true)
+    // setFilteredData(
+    //   allUSers.filter((item) =>
+    //     item.ad.toLowerCase().includes(searchedData.toLowerCase())
+    //   )
+    // );
+    setIsSearch(true);
   };
 
   return (
@@ -34,17 +44,16 @@ console.log(myData)
           <button>Search</button>
         </form>
         <div className="search-result">
-          {(isSearch && filteredData.length === 0) && (
+          {isSearch && filteredData.length === 0 && (
             <h1>
               Musteri Qeydiyyati{" "}
               <Link style={{ color: "red" }} to="/new-login">
                 Qeydiyyat
               </Link>
             </h1>
-
           )}
-         {
-          (isSearch && filteredData.length > 0) && (
+          {isSearch &&
+            filteredData.length > 0 &&
             filteredData.map((item) => (
               <div
                 style={{
@@ -97,9 +106,7 @@ console.log(myData)
                   </Table>
                 </TableContainer>
               </div>
-            ))
-          )
-         }
+            ))}
         </div>
       </div>
     </div>
