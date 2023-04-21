@@ -33,9 +33,12 @@ const Form = () => {
     // myArray = [...myArray, defaultValues];
     // window.localStorage.setItem("myData", JSON.stringify(myArray));
     dispatch(userSliceAction.addUser(defaultValues));
-    window.localStorage.setItem('users', JSON.stringify([...allUsers,defaultValues]));
+    
   };
 
+  useEffect(() => {
+    window.localStorage.setItem('users', JSON.stringify(allUsers));
+  }, [])
 
   return (
     <form onSubmit={handleSubmit}>
