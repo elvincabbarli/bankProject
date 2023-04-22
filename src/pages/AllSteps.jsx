@@ -36,7 +36,6 @@ const AllSteps = () => {
                     <Step>
                         <StepLabel></StepLabel>
                     </Step>
-                    
                 </Stepper>
             </div>
             {showStep(step)}
