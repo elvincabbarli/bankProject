@@ -6,9 +6,9 @@ const Header = () => {
   return (
     <header>
       <Link to="/">
-        <h1>Bank Respublika <span>Kredit App</span></h1>
+        <h1>Kredit App</h1>
       </Link>
-      <Link to='musteri-login'>Müştəri Qeydiyyatı</Link>
+      <Link className="muster-login" to='musteri-login'>Müştəri Qeydiyyatı</Link>
     </header>
   );
 };

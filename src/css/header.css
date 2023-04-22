@@ -1,3 +1,12 @@
-header{
+header {
     display: flex;
+    justify-content: space-between;
+    padding:15px 20px;
+    align-items: center;
+  }
+
+  .muster-login{
+    font-weight: bold;
+    color: #000;
+    font-size: 20px;
   }
