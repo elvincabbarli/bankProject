@@ -3,7 +3,8 @@ import Footer from "./components/footer";
 import Header from "./components/header";
 import Main from "./pages/Main";
 import Form from "./pages/newlogin";
-import MultiCreditForm from './pages/MultiCreditForm';
+import AllSteps from "./pages/AllSteps";
+
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/new-login" element={<Form />} />
-        <Route path="/credit" element={<MultiCreditForm />} /> 
+        <Route path="/credit" element={< AllSteps />} /> 
       </Routes>
       <Footer />
     </>
