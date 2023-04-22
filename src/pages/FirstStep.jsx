@@ -11,15 +11,14 @@ const FirstStep = () => {
 
   const handleChangeStep = () => {
     const enteredData = {
-        firstName,
-        lastName,
-        contactNumber
+      firstName,
+      lastName,
+      contactNumber,
     };
 
     dispatch(stepSliceAction.changeStep(2));
     dispatch(stepSliceAction.getUserData(enteredData));
   };
-
 
   return (
     <div className="first-form">
