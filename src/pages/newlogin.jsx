@@ -1,8 +1,8 @@
-import { Button, Grid, TextField } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userSliceAction } from "../store/user-slice";
 import MaskedInput from "react-text-mask";
+import '../css/login.css'
 
 const Form = () => {
   const [ad, setAd] = useState("");
@@ -38,121 +38,99 @@ const Form = () => {
 
 
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <Grid container alignItems="center" justify="center" direction="row">
-        <Grid item>
-          <TextField
-            label="Adi"
-            id="name-input"
-            name="name"
-            type="text"
-            value={ad}
-            onChange={(e) => setAd(e.target.value)}
-          />
-        </Grid>
-        <Grid item>
-          <TextField
-            label="Soyadi"
-            type="text"
-            value={soyad}
-            onChange={(e) => setSoyad(e.target.value)}
-          />
-        </Grid>
-      </Grid>
+  return (   
+    <div class="containerr">
+    <div class="title">Müştəri Qeydiyyatı</div>
+    <div class="content">
+      <form onSubmit={handleSubmit}>
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Ad</span>
+            <input placeholder="Ad"
+             id="name-input"
+             name="name"
+             type="text"
+             value={ad}
+             required
+             onChange={(e) => setAd(e.target.value)} />
+          </div>
+          <div class="input-box">
+            <span class="details">Soyad</span>
+            <input placeholder="Soyad"
+             type="text"
+             value={soyad}
+             required
+             onChange={(e) => setSoyad(e.target.value)} />
+          </div>
+          <div class="input-box">
+            <span class="details">Ata Adı</span>
+            <input  placeholder="Ata Adi"
+             type="text"
+             value={ataAdi}
+             onChange={(e) => setAtaadi(e.target.value)} required />
+          </div>
+          <div class="input-box">
+            <span class="details">FIN</span>
+            <input  placeholder="FIN"
+             type="text"
+             value={finKod}
+             onChange={(e) => setFinKod(e.target.value)} required />
+          </div>
+          <div class="input-box">
+            <span class="details">Cib Nomresi</span>
+            <MaskedInput  mask={["(",/[0-9]/,/\d/,/\d/,")"," ",/\d/,/\d/,/\d/,"-",/\d/,/\d/,"-",/\d/,/\d/,]}
+             placeholder="Cib Nomresi"
+             guide={true}
+             value={mobil}
+             onChange={(e) => setMobil(e.target.value)} required />
+          </div>
+          <div class="input-box">
+            <span class="details">Ev Nomresi</span>
+            <MaskedInput  mask={["(",/[0-9]/,/\d/,/\d/,")"," ",/\d/,/\d/,/\d/,"-",/\d/,/\d/,"-",/\d/,/\d/,]}
+             placeholder="Ev Nomresi"
+             guide={true}
+             value={evNom}
+             onChange={(e) => setEvnom(e.target.value)} required />
+          </div>
+          <div class="input-box">
+            <span class="details">Faktiki Unvan</span>
+            <input
+             placeholder="Faktiki Unvan"
+             type="text"
+             value={faktikiUnvan}
+             onChange={(e) => setFaktiki(e.target.value)}
+             required
+           />
+          </div>
+          <div class="input-box">
+            <span class="details">Qeydiyyat Unvan</span>
+            <input
+             placeholder="Qeydiyyat Unvan"
+             type="text"
+             value={qeydiyyatUnvan}
+             onChange={(e) => setQeydiyyat(e.target.value)}
+             required
+           />
+          </div>
+          <div class="input-box">
+            <span class="details">Ad Günü</span>
+            <input
+           id="date"
+           placeholder="Ad Günü"
+           type="date"
+           value={dogumTarixi}
+           onChange={(e) => setTarix(e.target.value)}
+           required />
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Qeydiyyat" />
+        </div>
+      </form>
+    </div>
+  </div>
 
-      <Grid container alignItems="center" justify="center" direction="row">
-        <Grid item>
-          <TextField
-            label="Ata Adi"
-            type="text"
-            value={ataAdi}
-            onChange={(e) => setAtaadi(e.target.value)}
-          />
-        </Grid>
 
-        <Grid item>
-          <TextField
-            label="FIN"
-            type="number"
-            value={finKod}
-            onChange={(e) => setFinKod(e.target.value)}
-          />
-        </Grid>
-      </Grid>
-
-      <Grid container alignItems="center" justify="center" direction="row">
-        <Grid item>
-          <TextField
-            label="Cib Nomresi"
-            type="number"
-            value={mobil}
-            onChange={(e) => setMobil(e.target.value)}
-          />
-        </Grid>
-        <Grid item>
-          <MaskedInput
-            mask={[
-              "(",
-              /[0-9]/,
-              /\d/,
-              /\d/,
-              ")",
-              " ",
-              /\d/,
-              /\d/,
-              /\d/,
-              "-",
-              /\d/,
-              /\d/,
-              "-",
-              /\d/,
-              /\d/,
-            ]}
-            placeholder="Ev Nomresi"
-            guide={true}
-            value={evNom}
-            onChange={(e) => setEvnom(e.target.value)}
-          />
-        </Grid>
-      </Grid>
-
-      <Grid container alignItems="center" justify="center" direction="row">
-        <Grid item>
-          <TextField
-            label="Faktiki Unvan"
-            type="text"
-            value={faktikiUnvan}
-            onChange={(e) => setFaktiki(e.target.value)}
-          />
-        </Grid>
-        <Grid item>
-          <TextField
-            label="Qeydiyyat Unvan"
-            type="text"
-            value={qeydiyyatUnvan}
-            onChange={(e) => setQeydiyyat(e.target.value)}
-          />
-        </Grid>
-      </Grid>
-
-      <Grid container alignItems="center" justify="center" direction="row">
-        <TextField
-          id="date"
-          label="Birthday"
-          type="date"
-          value={dogumTarixi}
-          onChange={(e) => setTarix(e.target.value)}
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-
-        <Button variant="contained" color="primary" type="submit">
-          Submit
-        </Button>
-      </Grid>
-    </form>
   );
 };
 export default Form;
