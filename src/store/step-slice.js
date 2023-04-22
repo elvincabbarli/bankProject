@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialStepState = {
     step: 1,
-    finalData: [],
+    finalData: {},
 };
 
 export const stepSlice = createSlice({
@@ -13,7 +13,7 @@ export const stepSlice = createSlice({
             state.step = action.payload;
         },
         getUserData(state,action) {
-            state.finalData = [...state.finalData, action.payload];
+            state.finalData = {...state.finalData, ...action.payload};
         }
     },
 });

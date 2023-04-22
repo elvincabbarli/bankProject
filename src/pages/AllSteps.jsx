@@ -17,6 +17,8 @@ const AllSteps = () => {
                 return <SecondStep/>;
             case 3: 
                 return <ThirdStep/>;
+            case 4:
+                return <SummaryStep/>;
         }
     };
 
@@ -34,6 +36,7 @@ const AllSteps = () => {
                     <Step>
                         <StepLabel></StepLabel>
                     </Step>
+                    
                 </Stepper>
             </div>
             {showStep(step)}
