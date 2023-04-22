@@ -40,7 +40,7 @@ const Main = () => {
           {isSearch && filteredData.length === 0 && (
             <h1>
               Musteri Qeydiyyati{" "}
-              <Link style={{ color: "red" }} to="/new-login">
+              <Link style={{ color: "red" }} to="/musteri-login">
                 Qeydiyyat
               </Link>
             </h1>
@@ -62,7 +62,8 @@ const Main = () => {
                       <div class='col col-1'>Cib</div>
                       <div class='col col-1'>Faktiki Unvan</div>
                       <div class='col col-1'>Qeydiyyat Unvan</div>
-                      <div class='col col-1'>Action</div>
+                      <div class='col col-1'>Kredit</div>
+                      <div class='col col-1'>Zamin</div>
               </li>
                   )}
               {isSearch &&
@@ -78,7 +79,8 @@ const Main = () => {
                         <div class="col col-1">{item.mobil}</div>
                         <div class="col col-1">{item.faktikiUnvan}</div>
                         <div class="col col-1">{item.qeydiyyatUnvan}</div>
-                        <Link to='/credit' class="col-1">Kredit Yarat</Link>
+                        <Link to='/credit' class="col-1">Kredit Add</Link>
+                        <Link to='/zamin-add' class="col-1">Zamin Add</Link>
                     </li>
                   ))}
             </ul>

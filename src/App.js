@@ -2,8 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import Footer from "./components/footer";
 import Header from "./components/header";
 import Main from "./pages/Main";
-import Form from "./pages/newlogin";
+import Form from "./pages/musteriLogin";
 import AllSteps from "./pages/AllSteps";
+import ZaminForm from "./pages/zaminLogin";
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/new-login" element={<Form />} />
+        <Route path="/musteri-login" element={<Form />} />
+        <Route path="/zamin-add" element={<ZaminForm />} />
         <Route path="/credit" element={< AllSteps />} /> 
       </Routes>
       <Footer />
