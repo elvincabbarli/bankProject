@@ -19,12 +19,13 @@ const AllSteps = () => {
                 return <ThirdStep/>;
             case 4:
                 return <SummaryStep/>;
+            default:
         }
     };
 
     return (
         <div className='multy-step-app'>
-            <h3>Multy Step Application</h3>
+            <h3 style={{marginBottom: '10px'}}>Kredit Müraciəti</h3>
             <div className='center-stepper'>
                 <Stepper style={{ width: '100%' }} activeStep={step-1} orientation="horizontal">
                     <Step>

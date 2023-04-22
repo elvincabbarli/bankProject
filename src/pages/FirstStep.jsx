@@ -1,19 +1,26 @@
 import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import '../css/login.css'
 import { stepSliceAction } from "../store/step-slice";
 
 const FirstStep = () => {
   const dispatch = useDispatch();
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [contactNumber, setContactNumber] = useState();
+  const [faliyyet, setFaliyyet] = useState("");
+  const [gelirAyliq, setGelirAyliq] = useState("");
+  const [isTecrubesiIl, setIsTecrubesiIl] = useState();
+  const [isTecrubesiAy, setIsTecrubesiAy] = useState();
+  const [region, setRegion] = useState();
+  const [biznesUnvan, setBiznesUnvan] = useState();
 
   const handleChangeStep = () => {
     const enteredData = {
-      firstName,
-      lastName,
-      contactNumber,
+      faliyyet,
+      gelirAyliq,
+      isTecrubesiIl,
+      isTecrubesiAy,
+      region,
+      biznesUnvan,
     };
 
     dispatch(stepSliceAction.changeStep(2));
@@ -23,38 +30,53 @@ const FirstStep = () => {
   return (
     <div className="first-form">
       <div className="first-input">
-        <TextField
-          label="First name"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+        <input
+          placeholder="Fəaliyyət Sektoru"
+          value={faliyyet}
+          onChange={(e) => setFaliyyet(e.target.value)}
+        />
+      </div>
+      <div className="first-input">
+        <input
+          placeholder="Aylıq Gəliri"
+          value={gelirAyliq}
+          type="number"
+          onChange={(e) => setGelirAyliq(e.target.value)}
+        />
+      </div>
+      <div className="first-input">
+        <input
+          placeholder="İş Təcrübəsi(il)"
+          value={isTecrubesiIl}
+          type="number"
+          onChange={(e) => setIsTecrubesiIl(e.target.value)}
         />
       </div>
       <div className="first-input">
         <TextField
-          label="Last name"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          placeholder="İş Təcrübəsi(ay)"
+          value={isTecrubesiAy}
+          type="number"
+          onChange={(e) => setIsTecrubesiAy(e.target.value)}
         />
       </div>
       <div className="first-input">
-        <TextField
-          label="Contact Number"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={contactNumber}
-          onChange={(e) => setContactNumber(e.target.value)}
+        <input
+          placeholder="Region"
+          value={region}
+          onChange={(e) => setRegion(e.target.value)}
+        />
+      </div>
+      <div className="first-input">
+        <input
+          placeholder="Biznes Ünvanı"
+          value={biznesUnvan}
+          onChange={(e) => setBiznesUnvan(e.target.value)}
         />
       </div>
       <div className="first-button">
         <Button variant="contained" color="primary" onClick={handleChangeStep}>
-          Next
+          Növbəti
         </Button>
       </div>
     </div>
