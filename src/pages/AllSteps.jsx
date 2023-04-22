@@ -5,6 +5,7 @@ import ThirdStep from "./ThirdStep";
 import SummaryStep from "./SummaryStep";
 import { Stepper, StepLabel, Step } from '@mui/material';
 import { useSelector } from 'react-redux';
+import CreditCalc from './Credit-calc';
 
 const AllSteps = () => {
     const step = useSelector(state => state.stepReducer.step);
@@ -18,6 +19,8 @@ const AllSteps = () => {
             case 3: 
                 return <ThirdStep/>;
             case 4:
+                return <CreditCalc/>;
+            case 5:
                 return <SummaryStep/>;
             default:
         }
@@ -28,6 +31,9 @@ const AllSteps = () => {
             <h3 style={{marginBottom: '10px'}}>Kredit Müraciəti</h3>
             <div className='center-stepper'>
                 <Stepper style={{ width: '100%' }} activeStep={step-1} orientation="horizontal">
+                    <Step>
+                        <StepLabel></StepLabel>
+                    </Step>
                     <Step>
                         <StepLabel></StepLabel>
                     </Step>

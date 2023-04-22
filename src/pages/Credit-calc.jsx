@@ -4,6 +4,7 @@ import { stepSliceAction } from "../store/step-slice";
 import { useDispatch, useSelector } from "react-redux";
 
 const ThirdStep = () => {
+    const finalData = useSelector(state => state.stepReducer.finalData);
 
     const [city,setCity] = useState("");
     const [landMark,setLandMark] = useState("");
@@ -11,8 +12,21 @@ const ThirdStep = () => {
   const dispatch = useDispatch();
 
   const handlePrevStep = () => {
-    dispatch(stepSliceAction.changeStep(2));
+    dispatch(stepSliceAction.changeStep(3));
   };
+
+
+  const creditHesabla = () => {
+    let mebleg = Number(finalData.mebleg);
+    let faiz = Number(finalData.faiz);
+    let muddet = Number(finalData.muddet)
+    let ayliq = (mebleg*(faiz/1200))/(1-(1/Math.pow(1+faiz/1200 , muddet)))
+    let ilkay = mebleg-ayliq;
+    console.log(ilkay)
+  }
+
+  creditHesabla()
+
 
 
   const handleSubmit = (e) => {
@@ -23,48 +37,22 @@ const ThirdStep = () => {
         postalCode,
     };
     dispatch(stepSliceAction.getUserData(enteredData));
-    dispatch(stepSliceAction.changeStep(4));
+    dispatch(stepSliceAction.changeStep(5));
 
   };
 
   return (
     <div class="third-form">
-      <div className="third-input">
-        <TextField
-          label="City"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-      </div>
-      <div className="third-input">
-        <TextField
-          label="LandMark"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={landMark}
-          onChange={(e) => setLandMark(e.target.value)}
-        />
-      </div>
-      <div className="third-input">
-        <TextField
-          label="Postal Code"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={postalCode}
-          onChange={(e) => setPostalCode(e.target.value)}
-        />
-      </div>
+    <h3 style={{marginTop: '20px' , marginBottom: '10px'}}>Kredit Kalkulyatoru</h3>
+      <p>Ayliq Faiz: {finalData.faiz}</p>
+      <p>Mebleg: {finalData.mebleg}</p>
+      <p>Muddet: {finalData.muddet}</p>
       <div className="third-buttons">
         <Button variant="outlined" color="primary" onClick={handlePrevStep}>
           Back
         </Button>
         <Button variant="contained" color="primary" onClick={handleSubmit}>
-          Next
+          Submit
         </Button>
       </div>
     </div>
