@@ -78,7 +78,7 @@ const Main = () => {
                         <div class="col col-1">{item.mobil}</div>
                         <div class="col col-1">{item.faktikiUnvan}</div>
                         <div class="col col-1">{item.qeydiyyatUnvan}</div>
-                        <Link class="col-1">Kredit Yarat</Link>
+                        <Link to='/credit' class="col-1">Kredit Yarat</Link>
                     </li>
                   ))}
             </ul>
