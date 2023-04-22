@@ -3,6 +3,8 @@
   padding: 0;
 }
 
+
+
 .main-container {
   background-color: antiquewhite;
   min-height: 80vh;
@@ -69,9 +71,11 @@ h2 small {
 }
 
 .table-row a {
-  border: 1px solid #9b59b6;
+  /* border: 1px solid #9b59b6; */
+  color: #71b7e6;
   border-radius: 5px;
-  padding: 5px;
+  /* padding: 2px; */
+  font-weight: bolder;
 }
 
 .table-header div {
