@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import "../css/main.css";
 import { Link } from "react-router-dom";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
 import { useSelector } from "react-redux";
 
 const Main = () => {
@@ -54,63 +46,44 @@ const Main = () => {
             </h1>
           )}
 
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <TableContainer>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                {isSearch && filteredData.length > 0 && (
-                  <TableHead sx={{ border: 1 }}>
-                    <TableRow>
-                      <TableCell align="right">Ad:</TableCell>
-                      <TableCell align="right">Soyad:</TableCell>
-                      <TableCell align="right">Ata Adi</TableCell>
-                      <TableCell align="right">FIN Kod</TableCell>
-                      <TableCell align="right">Dogum Tarixi</TableCell>
-                      <TableCell align="right">Ev Nomresi</TableCell>
-                      <TableCell align="right">Cib</TableCell>
-                      <TableCell align="right">Faktiki Unvan</TableCell>
-                      <TableCell align="right">Qeydiyyat Unvan</TableCell>
-                      <TableCell align="right">Action</TableCell>
-                    </TableRow>
-                  </TableHead>
-                )}
-                {isSearch &&
+          
+
+          <div class="container">
+            <ul class="responsive-table">
+            {isSearch && filteredData.length > 0 && (
+
+              <li class="table-header">
+                      <div class='col col-1'>Ad:</div>
+                      <div class='col col-1'>Soyad:</div>
+                      <div class='col col-1'>Ata Adi</div>
+                      <div class='col col-1'>FIN Kod</div>
+                      <div class='col col-1'>Dogum Tarixi</div>
+                      <div class='col col-1'>Ev Nomresi</div>
+                      <div class='col col-1'>Cib</div>
+                      <div class='col col-1'>Faktiki Unvan</div>
+                      <div class='col col-1'>Qeydiyyat Unvan</div>
+                      <div class='col col-1'>Action</div>
+              </li>
+                  )}
+              {isSearch &&
                   filteredData.length > 0 &&
                   filteredData.map((item) => (
-                    <TableBody sx={{ border: 1 }}>
-                      <TableRow
-                        key={item.ad}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                        }}
-                      >
-                        <TableCell component="th" scope="row">
-                          {item.ad}
-                        </TableCell>
-                        <TableCell align="right">{item.soyad}</TableCell>
-                        <TableCell align="right">{item.ataAdi}</TableCell>
-                        <TableCell align="right">{item.finKod}</TableCell>
-                        <TableCell align="right">{item.dogumTarixi}</TableCell>
-                        <TableCell align="right">{item.evNom}</TableCell>
-                        <TableCell align="right">{item.mobil}</TableCell>
-                        <TableCell align="right">{item.faktikiUnvan}</TableCell>
-                        <TableCell align="right">
-                          {item.qeydiyyatUnvan}
-                        </TableCell>
-                        <TableCell align="right">
-                          <Link to="/credit">Kredit Yarat</Link>
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
+                    <li class="table-row">
+                      <div class="col col-1" data-label="Ad">{item.ad}</div>
+                        <div class="col col-1" data-label="Soyad">{item.soyad}</div>
+                        <div class="col col-1">{item.ataAdi}</div>
+                        <div class="col col-1">{item.finKod}</div>
+                        <div class="col col-1">{item.dogumTarixi}</div>
+                        <div class="col col-1">{item.evNom}</div>
+                        <div class="col col-1">{item.mobil}</div>
+                        <div class="col col-1">{item.faktikiUnvan}</div>
+                        <div class="col col-1">{item.qeydiyyatUnvan}</div>
+                        <Link class="col-1">Kredit Yarat</Link>
+                    </li>
                   ))}
-              </Table>
-            </TableContainer>
+            </ul>
           </div>
+
         </div>
       </div>
     </div>
