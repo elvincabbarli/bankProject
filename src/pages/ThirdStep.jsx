@@ -24,8 +24,9 @@ const ThirdStep = () => {
         landMark,
         postalCode,
     };
-    
     dispatch(stepSliceAction.getUserData(enteredData));
+    dispatch(stepSliceAction.changeStep(4));
+
   };
 
   return (
