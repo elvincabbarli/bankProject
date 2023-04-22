@@ -53,7 +53,7 @@ const FirstStep = () => {
         />
       </div>
       <div className="first-input">
-        <TextField
+        <input
           placeholder="İş Təcrübəsi(ay)"
           value={isTecrubesiAy}
           type="number"

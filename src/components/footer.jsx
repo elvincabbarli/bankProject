@@ -8,68 +8,11 @@ const Footer = () => {
     <footer>
       <div>
         <div className="part-1">
-          <img src={logo} alt="" />
-        </div>
-        <div className="part-2">
-          <div>
-            <h4>Ferdi Musteriler</h4>
-            <ul>
-              <li>
-                <Link>Link 1</Link>
-              </li>
-              <li>
-                <Link>Link 2</Link>
-              </li>
-              <li>
-                <Link>Link 3</Link>
-              </li>
-              <li>
-                <Link>Link 4</Link>
-              </li>
-              <li>
-                <Link>Link 5</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4>Onlayn Xidmetler</h4>
-            <ul>
-              <li>
-                <Link>Link 1</Link>
-              </li>
-              <li>
-                <Link>Link 2</Link>
-              </li>
-              <li>
-                <Link>Link 3</Link>
-              </li>
-              <li>
-                <Link>Link 4</Link>
-              </li>
-              <li>
-                <Link>Link 5</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4>Bank Haqqinda</h4>
-            <ul>
-              <li>
-                <Link>Link 1</Link>
-              </li>
-              <li>
-                <Link>Link 2</Link>
-              </li>
-              <li>
-                <Link>Link 3</Link>
-              </li>
-              <li>
-                <Link>Link 4</Link>
-              </li>
-              <li>
-                <Link>Link 5</Link>
-              </li>
-            </ul>
+          <h1>Bank Respublika</h1>
+          <div className="socials">
+            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+            <i class="fa fa-whatsapp" aria-hidden="true"></i>
           </div>
         </div>
       </div>

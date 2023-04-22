@@ -28,20 +28,24 @@ const Main = () => {
   return (
     <div className="main-container">
       <div className="main-inner">
+      <h2>Müştəri Axtar:</h2>
         <form className="search-form" onSubmit={handleSearch}>
-          <input
-            type="text"
-            value={searchedData}
-            onChange={(e) => setSearchedData(e.target.value)}
-          />
-          <button>Search</button>
+          <div class="wrap">
+            <div class="search">
+                <input type="text" value={searchedData}
+            onChange={(e) => setSearchedData(e.target.value)} class="searchTerm" placeholder="FIN kod daxil et" />
+                <button type="submit" class="searchButton">
+                  <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
         </form>
         <div className="search-result">
           {isSearch && filteredData.length === 0 && (
             <h1>
-              Musteri Qeydiyyati{" "}
+              Müştəri Tapılmadı{" "} <br />
               <Link style={{ color: "red" }} to="/musteri-login">
-                Qeydiyyat
+                Qeydiyyat Et
               </Link>
             </h1>
           )}
