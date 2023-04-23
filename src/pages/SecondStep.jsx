@@ -2,6 +2,7 @@ import { Button, FormControlLabel, Radio, RadioGroup  } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { stepSliceAction } from "../store/step-slice";
+import '../css/main.css'
 
 
 const SecondStep = () => {
@@ -37,6 +38,7 @@ const SecondStep = () => {
       <div style={{marginTop: '15px'}} className="third-input">
         <h3>Valyuta</h3>
           <RadioGroup
+          className="radio-input"
             row
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
@@ -85,11 +87,11 @@ const SecondStep = () => {
         />
       </div>
       <div className="second-buttons">
-        <Button variant="outlined" color="primary" onClick={handlePrevStep}>
-          Back
+        <Button color="success" variant="contained" onClick={handlePrevStep}>
+          Geri
         </Button>
         <Button variant="contained" color="primary" onClick={handleNextStep}>
-          Next
+          Növbəti
         </Button>
       </div>
     </div>

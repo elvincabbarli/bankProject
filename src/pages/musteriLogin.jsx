@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userSliceAction } from "../store/user-slice";
 import MaskedInput from "react-text-mask";
 import '../css/login.css'
+import Swal from "sweetalert2";
 
 const Form = () => {
   const [ad, setAd] = useState("");
@@ -34,6 +35,13 @@ const Form = () => {
 
     dispatch(userSliceAction.addUser(defaultValues));
     window.localStorage.setItem('users' , JSON.stringify([...allUsers , defaultValues]))
+    Swal.fire({
+      icon: 'success',
+      showConfirmButton: false,
+      title: 'Uğrulu Əməliyyat!',
+      text: 'Müştəri Bazaya Əlavə Olundu',
+      footer: '<a  href="/">Ana Səhifəyə Get</a>'
+    })
   };
 
 
