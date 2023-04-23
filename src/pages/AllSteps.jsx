@@ -47,6 +47,9 @@ const AllSteps = () => {
           <Step>
             <StepLabel></StepLabel>
           </Step>
+          <Step>
+            <StepLabel></StepLabel>
+          </Step>
         </Stepper>
       </div>
       {showStep(step)}

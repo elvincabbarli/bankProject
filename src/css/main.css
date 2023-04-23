@@ -111,6 +111,11 @@ h2 small {
   text-align: center;
 }
 
+.responsive-table .col-2 {
+  flex-basis: 50%;
+  text-align: center;
+}
+
 .table-row a {
   color: #71b7e6;
   border-radius: 5px;
@@ -123,14 +128,6 @@ h2 small {
   color: #fff;
 }
 
-.summary div {
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  border-radius: 5px;
-  justify-content: space-between;
-  gap: 10px;
-}
 
 .third-input h3 {
   background-color: #fff;
