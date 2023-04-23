@@ -134,6 +134,57 @@ h2 small {
   gap: 10px;
 }
 
+.third-input h3{
+  background-color: #fff;
+  width: max-content;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.radio-inputs{
+  background-color: #fff;
+  width: 98%;
+  padding-left: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.zamin-inputs{
+  width: 100% !important;
+  margin-bottom: 0 !important;
+}
+
+.zamin-form{
+  padding: 20px;
+  margin: 30px 0;
+}
+
+.zamin-form-button{
+  margin-top: 0 !important;
+}
+
+.added-zamin h3{
+  text-align: center;
+  color: #000;
+  font-size: 22px;
+  margin: 15px auto;
+  background-color: #fff;
+  width: max-content;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.zamin-list{
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 15px 20px;
+  margin: 15px 0;
+}
+
+
 @media all and (max-width: 767px) {
   .responsive-table .table-header {
     display: none;

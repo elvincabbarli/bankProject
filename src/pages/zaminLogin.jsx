@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { zaminSliceAction } from "../store/zamin-slice";
 import MaskedInput from "react-text-mask";
 import '../css/login.css'
+import Swal from "sweetalert2";
 
 const ZaminForm = () => {
   const [adz, setAdz] = useState("");
@@ -16,11 +17,12 @@ const ZaminForm = () => {
   const [finKodz, setFinKodz] = useState("");
 
   const dispatch = useDispatch();
-  const allZamin = useSelector((state) => state.userReducer.zamins);
+  const allZamins = useSelector((state) => state.zaminReducer.zamin);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const defaultValues = {
+    const defaultValuesz = {
       adz,
       soyadz,
       ataAdiz,
@@ -32,9 +34,17 @@ const ZaminForm = () => {
       finKodz
     };
 
-    dispatch(zaminSliceAction.addZamin(defaultValues));
-    window.localStorage.setItem('users' , JSON.stringify([...allZamin , defaultValues]))
+    dispatch(zaminSliceAction.addZamin(defaultValuesz));
+    window.localStorage.setItem('zamins' , JSON.stringify([...allZamins , defaultValuesz]))
+    Swal.fire({
+      icon: 'success',
+      showConfirmButton: false,
+      title: 'Uğrulu Əməliyyat!',
+      text: 'Zamin Bazaya Əlavə Olundu',
+      footer: '<a  href="/">Ana Səhifəyə Get</a>'
+    })
   };
+
 
 
 
@@ -63,13 +73,6 @@ const ZaminForm = () => {
              onChange={(e) => setSoyadz(e.target.value)} />
           </div>
           <div class="input-box">
-            <span class="details">Ata Adı</span>
-            <input  placeholder="Ata Adi"
-             type="text"
-             value={ataAdiz}
-             onChange={(e) => setAtaadiz(e.target.value)} required />
-          </div>
-          <div class="input-box">
             <span class="details">FIN</span>
             <input  placeholder="FIN"
              type="text"
@@ -85,14 +88,6 @@ const ZaminForm = () => {
              onChange={(e) => setMobilz(e.target.value)} required />
           </div>
           <div class="input-box">
-            <span class="details">Ev Nomresi</span>
-            <MaskedInput  mask={["(",/[0-9]/,/\d/,/\d/,")"," ",/\d/,/\d/,/\d/,"-",/\d/,/\d/,"-",/\d/,/\d/,]}
-             placeholder="Ev Nomresi"
-             guide={true}
-             value={evNomz}
-             onChange={(e) => setEvnomz(e.target.value)} required />
-          </div>
-          <div class="input-box">
             <span class="details">Faktiki Unvan</span>
             <input
              placeholder="Faktiki Unvan"
@@ -101,26 +96,6 @@ const ZaminForm = () => {
              onChange={(e) => setFaktikiz(e.target.value)}
              required
            />
-          </div>
-          <div class="input-box">
-            <span class="details">Qeydiyyat Unvan</span>
-            <input
-             placeholder="Qeydiyyat Unvan"
-             type="text"
-             value={qeydiyyatUnvanz}
-             onChange={(e) => setQeydiyyatz(e.target.value)}
-             required
-           />
-          </div>
-          <div class="input-box">
-            <span class="details">Ad Günü</span>
-            <input
-           id="date"
-           placeholder="Ad Günü"
-           type="date"
-           value={dogumTarixiz}
-           onChange={(e) => setTarixz(e.target.value)}
-           required />
           </div>
         </div>
         <div class="button">

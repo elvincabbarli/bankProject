@@ -8,7 +8,10 @@ const Header = () => {
       <Link to="/">
         <h1>Kredit App</h1>
       </Link>
-      <Link className="muster-login" to='musteri-login'>Müştəri Qeydiyyatı</Link>
+      <div>
+        <Link className="muster-login" to='musteri-login'>Qeydiyyat(user)</Link> &nbsp;&nbsp;&nbsp;
+        <Link className="muster-login" to='musteri-login'>Qeydiyyat(zamin)</Link>
+      </div>
     </header>
   );
 };

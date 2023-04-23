@@ -67,11 +67,11 @@ const ThirdStep = () => {
       <p>Mebleg: {finalData.mebleg}</p>
       <p>Muddet: {finalData.muddet}</p>
       <div className="third-buttons">
-        <Button variant="outlined" color="primary" onClick={handlePrevStep}>
-          Back
+        <Button variant="contained" color="success" onClick={handlePrevStep}>
+          Geri
         </Button>
         <Button variant="contained" color="primary" onClick={handleSubmit}>
-          Submit
+          Növbəti
         </Button>
       </div>
     </div>
