@@ -48,6 +48,11 @@ const ThirdStep = () => {
       text: "Zamin Bazaya Əlavə Olundu",
       footer: '<a  href="/">Ana Səhifəyə Get</a>',
     });
+    setAdz('')
+    setSoyadz('')
+    setFaktikiz('')
+    setMobilz('')
+    setFinKodz('')
   };
 
   return (
@@ -113,22 +118,31 @@ const ThirdStep = () => {
       <hr />
       <div className="added-zamin">
           <h3>Əlavə Edilmiş Zaminlər</h3>
-          {
-            allZamins.length > 0 ? <div className="third-input zamin-input">
-            {allZamins.map((item) => (
-              <li className="zamin-list">
-                <div data-label="Ad">{item.adz}</div>
-                <div data-label="Soyad">{item.soyadz}</div>
-                <div>{item.finKodz}</div>
-                <div>{item.mobilz}</div>
-                <div>{item.faktikiUnvanz}</div>
-                <Link class="col-1"><i class="fa fa-trash" aria-hidden="true"></i></Link>
-              </li>
-            ))}
-          </div>
-          : 
-          <Link  to="/zamin-add" >Zamin Qeydiyyat</Link>
-          }
+
+          <ul class="responsive-table">
+              { allZamins.length > 0 && (
+                <li class="table-header">
+                  <div class="col col-2">Ad:</div>
+                  <div class="col col-2">Soyad:</div>
+                  <div class="col col-2">FIN Kod</div>
+                  <div class="col col-2">Cib</div>
+                  <div class="col col-2">Faktiki Unvan</div>
+                  <div class="col col-2">Action</div>
+                </li>
+              )}
+              {
+                allZamins.length > 0 &&
+                allZamins.map((item) => (
+                  <li class="table-row">
+                    <div class="col col-2" data-label="Ad">{item.adz}</div>
+                    <div class="col col-2" data-label="Soyad">{item.soyadz}</div>
+                    <div class="col col-2">{item.finKodz}</div>
+                    <div class="col col-2">{item.mobilz}</div>
+                    <div class="col col-2">{item.faktikiUnvanz}</div>
+                    <Link class="col-2"><i class="fa fa-trash" aria-hidden="true"></i></Link>
+                  </li>
+                ))}
+            </ul>
       </div>
       <div className="third-buttons">
         <Button variant="contained" color="success" onClick={handlePrevStep}>

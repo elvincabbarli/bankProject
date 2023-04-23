@@ -2,8 +2,9 @@ import { Button } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { stepSliceAction } from "../store/step-slice";
-import "../css/login.css";
+import "../css/summary.css";
 import Swal from "sweetalert2";
+import summary from '../images/summary.png'
 
 const SummaryStep = () => {
   const finalData = useSelector((state) => state.stepReducer.finalData);
@@ -44,78 +45,83 @@ const SummaryStep = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          "Göndərildi!",
-          "Bizi Seçdiyiniz üçün Təşəkkür Edirik.",
-          "success"
+          {
+            title: "Səbəb Göndərildi!",
+            text: "Bizi Seçdiyiniz üçün Təşəkkür Edirik !",
+            icon: "success",
+            showConfirmButton: false,
+            footer: '<a href="/">Ana Sehifeye Get</a>'
+          }
         );
       }
     });
   };
 
   return (
-    <div
-      style={{
-        textAlign: "center",
-      }}
-    >
+    <div className="summary-container">
       <h2>Xülasə</h2>
       <div className="summary">
+        <div className="personal-info">
+          <img src={summary} alt="" />
+        </div>
+        <div className="credit-info">
         <div>
-          <h4>Fəaliyyət sektoru:</h4>
+          <h4>Fəaliyyət sektoru: </h4>
           <span>{finalData.faliyyet}</span>
         </div>
         <div>
           <div>
-            <h4>Aylıq gəliri:</h4>
-            <p>{finalData.gelirAyliq}</p>
+            <h4>Aylıq gəliri: </h4>
+            <span>{finalData.gelirAyliq}</span>
           </div>
           <div>
-            <h4>İş təcrübəsi (ay):</h4>
-            <p>{finalData.isTecrubesiAy}</p>
+            <h4>İş təcrübəsi (ay): </h4>
+            <span>{finalData.isTecrubesiAy}</span>
           </div>
         </div>
         <div>
           <div>
-            <h4>İş təcrübəsi (il):</h4>
-            <p>{finalData.isTecrubesiIl}</p>
+            <h4>İş təcrübəsi (il): </h4>
+            <span>{finalData.isTecrubesiIl}</span>
           </div>
           <div>
-            <h4>Region:</h4>
-            <p>{finalData.region}</p>
+            <h4>Region: </h4>
+            <span>{finalData.region}</span>
           </div>
         </div>
         <div>
           <div>
-            <h4>Biznes ünvanı:</h4>
-            <p>{finalData.biznesUnvan}</p>
+            <h4>Biznes ünvanı: </h4>
+            <span>{finalData.biznesUnvan}</span>
           </div>
           <div>
-            <h4>Valyuta:</h4>
-            <p>{finalData.valyuta}</p>
+            <h4>Valyuta: </h4>
+            <span>{finalData.valyuta}</span>
           </div>
         </div>
         <div>
           <div>
-            <h4>Biznes kreditin məqsədi:</h4>
-            <p>{finalData.meqsed}</p>
+            <h4>Biznes kreditin məqsədi: </h4>
+            <span>{finalData.meqsed}</span>
           </div>
           <div>
-            <h4>Məbləğ:</h4>
-            <p>{finalData.mebleg}</p>
+            <h4>Məbləğ: </h4>
+            <span>{finalData.mebleg}</span>
           </div>
         </div>
         <div>
           <div>
-            <h4>Müddət:</h4>
-            <p>{finalData.muddet}</p>
+            <h4>Müddət: </h4>
+            <span>{finalData.muddet}</span>
           </div>
           <div>
-            <h4>Faiz:</h4>
-            <p>{finalData.faiz}</p>
+            <h4>Faiz: </h4>
+            <span>{finalData.faiz}</span>
           </div>
+        </div>
         </div>
       </div>
-      <div style={{ display: "flex", gap: "10px", marginTop: "15px" }}>
+      <div className="submit-section">
         <Button onClick={handleConfirm} color="info" variant="contained">
           Təsdiq et
         </Button>
