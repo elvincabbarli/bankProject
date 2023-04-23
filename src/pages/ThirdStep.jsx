@@ -21,6 +21,12 @@ const ThirdStep = () => {
     dispatch(stepSliceAction.changeStep(2));
   };
 
+  const handleRemove = (finkod) => {
+    dispatch(zaminSliceAction.removeZamin(finkod))
+    const newZamin = allZamins.filter(item => item.finKodz !== finkod)
+    window.localStorage.setItem('zamins' ,JSON.stringify(newZamin))
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(stepSliceAction.changeStep(4));
@@ -139,7 +145,7 @@ const ThirdStep = () => {
                     <div class="col col-2">{item.finKodz}</div>
                     <div class="col col-2">{item.mobilz}</div>
                     <div class="col col-2">{item.faktikiUnvanz}</div>
-                    <Link class="col-2"><i class="fa fa-trash" aria-hidden="true"></i></Link>
+                    <Link onClick={handleRemove.bind(null , item.finKodz)} class="col-2"><i class="fa fa-trash" aria-hidden="true"></i></Link>
                   </li>
                 ))}
             </ul>

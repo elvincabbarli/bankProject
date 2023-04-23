@@ -10,6 +10,7 @@ const ThirdStep = () => {
   const [landMark, setLandMark] = useState("");
   const [postalCode, setPostalCode] = useState();
   const dispatch = useDispatch();
+  const [movementS, setMovements] = useState([]);
 
   const handlePrevStep = () => {
     dispatch(stepSliceAction.changeStep(3));
@@ -39,13 +40,20 @@ const ThirdStep = () => {
   const display_mortgage = (mebleg, faiz, muddet) => {
     const payements = annuity(mebleg, faiz, muddet);
     let movements = balance_t(mebleg, faiz, payements);
+    let myArray = [];
     while (movements.final_value > -0.01) {
-      console.log(movements);
+      // console.log(movements);
       movements = balance_t(movements.final_value, faiz, payements);
+      myArray.push(movements);
     }
+    setMovements(myArray);
   };
 
-  display_mortgage(mebleg, faiz, muddet);
+  console.log(movementS);
+
+  const hesablaHandler = () => {
+    display_mortgage(mebleg, faiz, muddet);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,6 +74,15 @@ const ThirdStep = () => {
       <p>Ayliq Faiz: {finalData.faiz}</p>
       <p>Mebleg: {finalData.mebleg}</p>
       <p>Muddet: {finalData.muddet}</p>
+      <Button onClick={hesablaHandler}>HEsabla</Button>
+      <div>
+        {movementS.map((item) => (
+          <>
+            <li>{item.base}</li>
+            <li>{item.interest}</li>
+          </>
+        ))}
+      </div>
       <div className="third-buttons">
         <Button variant="contained" color="success" onClick={handlePrevStep}>
           Geri

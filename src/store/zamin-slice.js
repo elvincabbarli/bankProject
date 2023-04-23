@@ -20,6 +20,9 @@ export const zaminSlice = createSlice({
         addZamin(state,action) {
             state.zamin = [...state.zamin, action.payload];
         },
+        removeZamin(state,action) {
+            state.zamin = state.zamin.filter(item => item.finKodz !== action.payload)
+        }
     },
 });
 
