@@ -16,7 +16,6 @@ const ThirdStep = () => {
   const dispatch = useDispatch();
 
   const allZamins = useSelector((state) => state.zaminReducer.zamin);
-  console.log(allZamins);
 
   const handlePrevStep = () => {
     dispatch(stepSliceAction.changeStep(2));

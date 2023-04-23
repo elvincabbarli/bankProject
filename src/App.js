@@ -4,8 +4,6 @@ import Header from "./components/header";
 import Main from "./pages/Main";
 import Form from "./pages/musteriLogin";
 import AllSteps from "./pages/AllSteps";
-import ZaminForm from "./pages/zaminLogin";
-
 
 function App() {
   return (
@@ -14,8 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/musteri-login" element={<Form />} />
-        <Route path="/zamin-add" element={<ZaminForm />} />
-        <Route path="/credit" element={< AllSteps />} /> 
+        <Route path="/credit" element={<AllSteps />} />
       </Routes>
       <Footer />
     </>

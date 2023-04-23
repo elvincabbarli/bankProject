@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '../css/header.css'
+import "../css/header.css";
 
 const Header = () => {
   return (
@@ -8,10 +8,9 @@ const Header = () => {
       <Link to="/">
         <h1>Kredit App</h1>
       </Link>
-      <div>
-        <Link className="muster-login" to='musteri-login'>Qeydiyyat(user)</Link> &nbsp;&nbsp;&nbsp;
-        <Link className="muster-login" to='musteri-login'>Qeydiyyat(zamin)</Link>
-      </div>
+      <Link className="muster-login" to="musteri-login">
+        Qeydiyyat(müştəri)
+      </Link>
     </header>
   );
 };

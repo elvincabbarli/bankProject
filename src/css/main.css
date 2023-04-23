@@ -10,7 +10,6 @@
 }
 
 .main-container {
-  /* background: url(../images/bg.jpg); */
   background-position: center;
   background-size: cover;
   min-height: 76.3vh;
@@ -62,7 +61,6 @@ form.search-form {
 .searchButton {
   width: 40px;
   height: 36px;
-  /* border: 1px solid  #9b59b6; */
   border: none;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
   text-align: center;
@@ -134,14 +132,14 @@ h2 small {
   gap: 10px;
 }
 
-.third-input h3{
+.third-input h3 {
   background-color: #fff;
   width: max-content;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
-.radio-inputs{
+.radio-inputs {
   background-color: #fff;
   width: 98%;
   padding-left: 5px;
@@ -150,21 +148,21 @@ h2 small {
   margin: 10px 0;
 }
 
-.zamin-inputs{
+.zamin-inputs {
   width: 100% !important;
   margin-bottom: 0 !important;
 }
 
-.zamin-form{
+.zamin-form {
   padding: 20px;
   margin: 30px 0;
 }
 
-.zamin-form-button{
+.zamin-form-button {
   margin-top: 0 !important;
 }
 
-.added-zamin h3{
+.added-zamin h3 {
   text-align: center;
   color: #000;
   font-size: 22px;
@@ -175,7 +173,7 @@ h2 small {
   border-radius: 5px;
 }
 
-.zamin-list{
+.zamin-list {
   display: flex;
   align-items: center;
   background-color: #fff;
@@ -183,7 +181,6 @@ h2 small {
   padding: 15px 20px;
   margin: 15px 0;
 }
-
 
 @media all and (max-width: 767px) {
   .responsive-table .table-header {

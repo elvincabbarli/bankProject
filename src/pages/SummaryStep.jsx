@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { stepSliceAction } from "../store/step-slice";
 import "../css/login.css";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 
 const SummaryStep = () => {
   const finalData = useSelector((state) => state.stepReducer.finalData);
@@ -12,7 +11,6 @@ const SummaryStep = () => {
     (state) => state.stepReducer.confirmedCreditData
   );
   const dispatch = useDispatch();
-  const navigate = useNavigate()
 
   const handleConfirm = () => {
     dispatch(stepSliceAction.addCreditData(finalData));
@@ -21,38 +19,38 @@ const SummaryStep = () => {
       JSON.stringify([...creditData, finalData])
     );
     Swal.fire({
-      icon: 'success',
+      icon: "success",
       showConfirmButton: false,
-      title: 'Uğrulu Əməliyyat!',
-      text: 'Kredit Müraciətiniz Qeydə Alındı!',
-      footer: '<a  href="/">Ana Səhifəyə Get</a>'
-    })
+      title: "Uğrulu Əməliyyat!",
+      text: "Kredit Müraciətiniz Qeydə Alındı!",
+      footer: '<a  href="/">Ana Səhifəyə Get</a>',
+    });
   };
 
   const rejectHandle = () => {
     Swal.fire({
-      title: 'Imtina Səbəbiniz Nədir ?',
-      input: 'select',
+      title: "Imtina Səbəbiniz Nədir ?",
+      input: "select",
       inputOptions: {
-        'faiz': 'Faiz Yüksəkdir',
-        'məbləg': 'Məbləğ Aşağıdır',
-        'Digər': 'Şəxsi Səbəblər'
+        faiz: "Faiz Yüksəkdir",
+        məbləg: "Məbləğ Aşağıdır",
+        Digər: "Şəxsi Səbəblər",
       },
-      inputPlaceholder: 'Səbəb Qeyd Edin',
-      icon: 'warning',
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Göndər'
+      inputPlaceholder: "Səbəb Qeyd Edin",
+      icon: "warning",
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Göndər",
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Göndərildi!',
-          'Bizi Seçdiyiniz üçün Təşəkkür Edirik.',
-          'success'
-        )
+          "Göndərildi!",
+          "Bizi Seçdiyiniz üçün Təşəkkür Edirik.",
+          "success"
+        );
       }
-    })
-  }
+    });
+  };
 
   return (
     <div
