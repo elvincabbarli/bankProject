@@ -6,6 +6,7 @@ import { zaminSliceAction } from "../store/zamin-slice";
 import Swal from "sweetalert2";
 import MaskedInput from "react-text-mask";
 import { Link } from "react-router-dom";
+import {useForm} from 'react-hook-form'
 
 const ThirdStep = () => {
   const [adz, setAdz] = useState("");
@@ -27,13 +28,12 @@ const ThirdStep = () => {
     window.localStorage.setItem('zamins' ,JSON.stringify(newZamin))
   }
 
-  const handleSubmit = (e) => {
+  const handleThirdSubmit = (e) => {
     e.preventDefault();
     dispatch(stepSliceAction.changeStep(4));
   };
 
-  const sendSubmit = (event) => {
-    event.preventDefault();
+  const sendSubmit = () => {
     const defaultValuesz = {
       adz,
       soyadz,
@@ -49,10 +49,8 @@ const ThirdStep = () => {
     );
     Swal.fire({
       icon: "success",
-      showConfirmButton: false,
       title: "Uğrulu Əməliyyat!",
       text: "Zamin Bazaya Əlavə Olundu",
-      footer: '<a  href="/">Ana Səhifəyə Get</a>',
     });
     setAdz('')
     setSoyadz('')
@@ -61,64 +59,68 @@ const ThirdStep = () => {
     setFinKodz('')
   };
 
+  const {register , handleSubmit , formState: {errors}} = useForm()
+
   return (
     <div class="third-form zamin-form">
       <div className="third-input zamin-input">
         <h3>Zamin Əlavə Et</h3>
       </div>
-      <form onSubmit={sendSubmit}>
+      <form>
         <div class="user-details">
           <div class="input-box zamin-inputs">
             <input
               placeholder="Ad"
+              value={adz}
               id="name-input"
+              onChange={(e) => setAdz(e.target.value)}
               name="name"
               type="text"
-              value={adz}
               required
-              onChange={(e) => setAdz(e.target.value)}
             />
           </div>
           <div class="input-box zamin-inputs">
             <input
+            {...register('lastName' , {required: 'Soyad daxil edin'})}
               placeholder="Soyad"
               type="text"
               value={soyadz}
-              required
               onChange={(e) => setSoyadz(e.target.value)}
             />
+             <p>{errors.lastName?.message}</p>
           </div>
           <div class="input-box zamin-inputs">
             <input
+             {...register('finNumber' , {required: 'FIN kod daxil edin' , maxLength: 8})}
               placeholder="FIN"
               type="text"
               value={finKodz}
               onChange={(e) => setFinKodz(e.target.value)}
-              required
             />
+            <p>{errors.finNumber?.message}</p>
           </div>
           <div class="input-box zamin-inputs">
             <MaskedInput
               mask={["(",/[0-9]/,/\d/,/\d/,")"," ",/\d/,/\d/,/\d/,"-",/\d/,/\d/,"-",/\d/,/\d/,]}
-              placeholder="Cib Nomresi"
+              placeholder="Cib Telefonu"
               guide={true}
               value={mobilz}
               onChange={(e) => setMobilz(e.target.value)}
-              required
             />
           </div>
           <div class="input-box zamin-inputs">
             <input
+             {...register('actualAdress' , {required: 'Faktiki Unvan daxil edin'})}
               placeholder="Faktiki Unvan"
               type="text"
               value={faktikiUnvanz}
               onChange={(e) => setFaktikiz(e.target.value)}
-              required
             />
+            <p>{errors.actualAdress?.message}</p>
           </div>
         </div>
         <div class="button zamin-form-button">
-          <input type="submit" value="Əlavə Et" />
+          <input onClick={handleSubmit(sendSubmit)} type="submit" value="Əlavə Et" />
         </div>
       </form>
       <hr />
@@ -150,11 +152,11 @@ const ThirdStep = () => {
                 ))}
             </ul>
       </div>
-      <div className="third-buttons">
+      <div style={{marginBottom: '15px'}} className="third-buttons">
         <Button variant="contained" color="success" onClick={handlePrevStep}>
           Geri
         </Button>
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
+        <Button variant="contained" color="primary" onClick={handleThirdSubmit}>
           Növbəti
         </Button>
       </div>

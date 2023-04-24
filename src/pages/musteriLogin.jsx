@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userSliceAction } from "../store/user-slice";
+import { useForm} from 'react-hook-form'
 import MaskedInput from "react-text-mask";
 import '../css/login.css'
 import Swal from "sweetalert2";
 
 const Form = () => {
+  // MY STATES
   const [ad, setAd] = useState("");
   const [soyad, setSoyad] = useState("");
   const [ataAdi, setAtaadi] = useState("");
@@ -16,22 +18,14 @@ const Form = () => {
   const [evNom, setEvnom] = useState("");
   const [finKod, setFinKod] = useState("");
 
+  // REDUX THINGS
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.userReducer.users);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const defaultValues = {
-      ad,
-      soyad,
-      ataAdi,
-      qeydiyyatUnvan,
-      faktikiUnvan,
-      dogumTarixi,
-      mobil,
-      evNom,
-      finKod
-    };
+
+  // MY FUNCTIONS
+  const myFunc = () => {
+    const defaultValues = {ad,soyad,ataAdi,qeydiyyatUnvan,faktikiUnvan,dogumTarixi,mobil,evNom,finKod};
 
     dispatch(userSliceAction.addUser(defaultValues));
     window.localStorage.setItem('users' , JSON.stringify([...allUsers , defaultValues]))
@@ -45,94 +39,109 @@ const Form = () => {
   };
 
 
+  // REACT HOOK FORM
+  const {register , handleSubmit , formState: {errors}} = useForm()
+
 
   return (   
-    <div class="containerr">
-    <div class="title">Müştəri Qeydiyyatı</div>
-    <div class="content">
-      <form onSubmit={handleSubmit}>
-        <div class="user-details">
-          <div class="input-box">
-            <span class="details">Ad</span>
+    <div className="containerr">
+    <div className="title">Müştəri Qeydiyyatı</div>
+    <div className="content">
+      <form onSubmit={handleSubmit((data) => {
+        console.log(data)
+        return myFunc()
+      })}>
+        <div className="user-details">
+          <div className="input-box">
+            <span className="details">Ad</span>
             <input placeholder="Ad"
              id="name-input"
-             name="name"
+             {...register('firstName' , {required: 'Adınızı daxil edin'})}
              type="text"
              value={ad}
-             required
              onChange={(e) => setAd(e.target.value)} />
+             <p>{errors.firstName?.message}</p>
           </div>
-          <div class="input-box">
-            <span class="details">Soyad</span>
+          <div className="input-box">
+            <span className="details">Soyad</span>
             <input placeholder="Soyad"
+            {...register('lastName' , {required: 'Soyadınızı daxil edin'})}
              type="text"
              value={soyad}
-             required
              onChange={(e) => setSoyad(e.target.value)} />
+             <p>{errors.lastName?.message}</p>
           </div>
-          <div class="input-box">
-            <span class="details">Ata Adı</span>
+          <div className="input-box">
+            <span className="details">Ata Adı</span>
             <input  placeholder="Ata Adi"
+            {...register('fatherName' , {required: 'Ata Adını daxil edin'})}
              type="text"
              value={ataAdi}
-             onChange={(e) => setAtaadi(e.target.value)} required />
+             onChange={(e) => setAtaadi(e.target.value)}  />
+            <p>{errors.fatherName?.message}</p>
           </div>
-          <div class="input-box">
-            <span class="details">FIN</span>
+          <div className="input-box">
+            <span className="details">FIN</span>
             <input  placeholder="FIN"
              type="text"
+             {...register('finNumber' , {required: 'FIN kodunuzu daxil edin' , maxLength: 8})}
              value={finKod}
-             onChange={(e) => setFinKod(e.target.value)} required />
+             onChange={(e) => setFinKod(e.target.value)}  />
+            <p>{errors.finNumber?.message}</p>
           </div>
-          <div class="input-box">
-            <span class="details">Cib Nomresi</span>
+          <div className="input-box">
+            <span className="details">Cib Telefonu</span>
             <MaskedInput  mask={["(",/[0-9]/,/\d/,/\d/,")"," ",/\d/,/\d/,/\d/,"-",/\d/,/\d/,"-",/\d/,/\d/,]}
-             placeholder="Cib Nomresi"
+             placeholder="Cib Telefonu"
              guide={true}
              value={mobil}
-             onChange={(e) => setMobil(e.target.value)} required />
+             onChange={(e) => setMobil(e.target.value)}  />
           </div>
-          <div class="input-box">
-            <span class="details">Ev Nomresi</span>
+          <div className="input-box">
+            <span className="details">Ev Telefonu</span>
             <MaskedInput  mask={["(",/[0-9]/,/\d/,/\d/,")"," ",/\d/,/\d/,/\d/,"-",/\d/,/\d/,"-",/\d/,/\d/,]}
-             placeholder="Ev Nomresi"
+             placeholder="Ev Telefonu"
              guide={true}
              value={evNom}
-             onChange={(e) => setEvnom(e.target.value)} required />
+             onChange={(e) => setEvnom(e.target.value)}  />
           </div>
-          <div class="input-box">
-            <span class="details">Faktiki Unvan</span>
+          <div className="input-box">
+            <span className="details">Faktiki Unvan</span>
             <input
              placeholder="Faktiki Unvan"
+             {...register('actualAdress' , {required: 'Faktiki Unvanınızı daxil edin'})}
              type="text"
              value={faktikiUnvan}
              onChange={(e) => setFaktiki(e.target.value)}
-             required
            />
+            <p>{errors.actualAdress?.message}</p>
           </div>
-          <div class="input-box">
-            <span class="details">Qeydiyyat Unvan</span>
+          <div className="input-box">
+            <span className="details">Qeydiyyat Unvan</span>
             <input
              placeholder="Qeydiyyat Unvan"
+             {...register('registerAdress' , {required: 'Qeydiyyat Unvanınızı daxil edin'})}
              type="text"
              value={qeydiyyatUnvan}
              onChange={(e) => setQeydiyyat(e.target.value)}
-             required
-           />
+              />
+               <p>{errors.registerAdress?.message}</p>
           </div>
-          <div class="input-box">
-            <span class="details">Ad Günü</span>
+          <div className="input-box">
+            <span className="details">Ad Günü</span>
             <input
-           id="date"
-           placeholder="Ad Günü"
-           type="date"
-           value={dogumTarixi}
-           onChange={(e) => setTarix(e.target.value)}
-           required />
+              id="date"
+              placeholder="Ad Günü"
+              {...register('birthDay' , {required: 'Ad Gününüzü daxil edin'})}
+              type="date"
+              value={dogumTarixi}
+              onChange={(e) => setTarix(e.target.value)}
+               />
+               <p>{errors.birthDay?.message}</p>
           </div>
         </div>
-        <div class="button">
-          <input type="submit" value="Qeydiyyat" />
+        <div className="button">
+          <input  type="submit" value="Qeydiyyat" />
         </div>
       </form>
     </div>
