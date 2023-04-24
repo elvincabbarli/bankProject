@@ -12,7 +12,7 @@ const SecondStep = () => {
   const [muddet, setMuddet] = useState("");
   const [faiz, setFaiz] = useState("");
 
-  console.log(valyuta);
+
 
   const dispatch = useDispatch();
 

@@ -4,22 +4,23 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Main = () => {
+  // MY STATES
   const [searchedData, setSearchedData] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [isSearch, setIsSearch] = useState(false);
   const allUSers = useSelector((state) => state.userReducer.users);
 
+
+  // MY FUNCTIONS
   const handleSearch = (e) => {
     e.preventDefault();
-
     if (searchedData.trim().length === 0) {
       setFilteredData([]);
       return;
     }
-
     setFilteredData(
       allUSers.filter((item) =>
-        item.ad.toLowerCase().includes(searchedData.toLowerCase().trim())
+        item.finKod.toLowerCase().includes(searchedData.toLowerCase().trim())
       )
     );
     setIsSearch(true);
@@ -54,7 +55,6 @@ const Main = () => {
               </Link>
             </h1>
           )}
-
           <div class="container">
             <ul class="responsive-table">
               {isSearch && filteredData.length > 0 && (

@@ -8,8 +8,10 @@ import { useSelector } from "react-redux";
 import CreditCalc from "./Credit-calc";
 
 const AllSteps = () => {
+  // REDUX THINGS
   const step = useSelector((state) => state.stepReducer.step);
 
+  // STEP FUNCTION
   const showStep = (step) => {
     switch (step) {
       case 1:

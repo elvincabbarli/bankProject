@@ -48,7 +48,6 @@ const Form = () => {
     <div className="title">Müştəri Qeydiyyatı</div>
     <div className="content">
       <form onSubmit={handleSubmit((data) => {
-        console.log(data)
         return myFunc()
       })}>
         <div className="user-details">
