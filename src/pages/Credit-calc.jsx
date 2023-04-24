@@ -1,14 +1,11 @@
-import { TextField, Button } from "@mui/material";
+import {  Button } from "@mui/material";
 import React, { useState } from "react";
 import { stepSliceAction } from "../store/step-slice";
 import { useDispatch, useSelector } from "react-redux";
 
+
 const ThirdStep = () => {
   const finalData = useSelector((state) => state.stepReducer.finalData);
-
-  const [city, setCity] = useState("");
-  const [landMark, setLandMark] = useState("");
-  const [postalCode, setPostalCode] = useState();
   const dispatch = useDispatch();
   const [movementS, setMovements] = useState([]);
 
@@ -19,7 +16,6 @@ const ThirdStep = () => {
   let mebleg = Number(finalData.mebleg);
   let faiz = Number(finalData.faiz) / 1200;
   let muddet = Number(finalData.muddet);
-  // let ayliq = (mebleg*faiz)/(1-(1/Math.pow(1+faiz , muddet)))
 
   const annuity = (mebleg, faiz, muddet) =>
     mebleg * (faiz / (1 - (1 + faiz) ** -muddet));
@@ -57,33 +53,46 @@ const ThirdStep = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const enteredData = {
-      city,
-      landMark,
-      postalCode,
-    };
-    dispatch(stepSliceAction.getUserData(enteredData));
     dispatch(stepSliceAction.changeStep(5));
   };
 
   return (
     <div class="third-form">
-      <h3 style={{ marginTop: "20px", marginBottom: "10px" }}>
+      <h3 className="kredit-h3">
         Kredit Kalkulyatoru
       </h3>
-      <p>Ayliq Faiz: {finalData.faiz}</p>
-      <p>Mebleg: {finalData.mebleg}</p>
-      <p>Muddet: {finalData.muddet}</p>
-      <Button onClick={hesablaHandler}>HEsabla</Button>
-      <div>
-        {movementS.map((item) => (
-          <>
-            <li>{item.base}</li>
-            <li>{item.interest}</li>
-          </>
-        ))}
+      <div className="credit-infos">
+        <p>Ayliq Faiz: {finalData.faiz}%</p>
+        <p>Mebleg: {finalData.mebleg}AZN</p>
+        <p>Muddet: {finalData.muddet}Ay</p>
       </div>
-      <div className="third-buttons">
+      <Button onClick={hesablaHandler}>Kredit Cedvelini  Göstər</Button>
+      <div>
+
+      <div class="container">
+            <ul class="responsive-table">
+              {movementS.length > 0 && (
+                <li class="table-header">
+                  <div class="col col-3">Ödəniş Məbləği:</div>
+                  <div class="col col-3">Əsas Borc:</div>
+                  <div class="col col-3">Faiz</div>
+                  <div class="col col-3">Qalıq</div>
+                </li>
+              )}
+              {
+                movementS.length > 0 &&
+                movementS.map((item) => (
+                  <li class="table-row">
+                    <div class="col col-3" data-label="Ad">{parseFloat (item.annuity.toFixed (2))}</div>
+                    <div class="col col-3" data-label="Soyad">{Math.round(parseFloat (item.amortization.toFixed (2)))}</div>
+                    <div class="col col-3">{parseFloat (item.interest.toFixed (2))}</div>
+                    <div class="col col-3">{parseFloat (item.base.toFixed (2))}</div>
+                  </li>
+                ))}
+            </ul>
+          </div>
+      </div>
+      <div style={{marginBottom: '15px'}} className="third-buttons">
         <Button variant="contained" color="success" onClick={handlePrevStep}>
           Geri
         </Button>
